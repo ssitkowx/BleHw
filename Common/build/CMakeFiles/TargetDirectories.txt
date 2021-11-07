@@ -1,0 +1,3 @@
+/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common/build/CMakeFiles/rebuild_cache.dir
+/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common/build/CMakeFiles/edit_cache.dir
+/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common/build/CMakeFiles/Project.dir
