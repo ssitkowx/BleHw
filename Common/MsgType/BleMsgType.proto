@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+message BleMsgType
+{
+    optional uint32 Id   = 1;
+    optional string Name = 2;
+    optional string Data = 3;
+  
+    enum EOperatingMode
+    {
+        eNormal = 0;
+        eStable = 1;
+        eEmpty  = 2;
+    }
+
+    optional EOperatingMode eOperatingMode = 4;
+}

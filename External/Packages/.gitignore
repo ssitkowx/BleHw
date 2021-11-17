@@ -1,0 +1,44 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+/trunk/build
+/trunk/conan/conaninfo.txt
+/trunk/conan/conanbuildinfo.cmake
+/trunk/conan/conanbuildinfo.gcc
+/trunk/conan/conanbuildinfo.txt
+/build
+/Build
+Conan/conan.lock
+Conan/conanbuildinfo.cmake
+Conan/conanbuildinfo.txt
+Conan/conaninfo.txt
+Conan/graph_info.json
