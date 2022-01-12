@@ -11,9 +11,9 @@
 #include "GattsConfig.h"
 #include "esp_bt_main.h"
 #include "BleServerHw.h"
+#include "BleSerializer.h"
 //#include "SystemTimeHw.h"
 #include "esp_gatt_common_api.h"
-#include "BleParserAndSerializer.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 /////////////////////////// MACROS/DEFINITIONS ////////////////////////////////
@@ -38,44 +38,38 @@ static uint8_t              advConfigDone;
 //////////////////////////////// FUNCTIONS ////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-static std::array <char, FORTY_THREE> ConvertGapEventToString (esp_gap_ble_cb_event_t v_event)
+static std::string_view ConvertGapEventToString (esp_gap_ble_cb_event_t v_event)
 {
-    std::array <char, FORTY_THREE> event = {};
     switch (v_event)
     {
-        case ESP_GAP_BLE_ADV_DATA_SET_COMPLETE_EVT     : { memcpy (event.data(), "ESP_GAP_BLE_ADV_DATA_SET_COMPLETE_EVT"     , strlen ("ESP_GAP_BLE_ADV_DATA_SET_COMPLETE_EVT"));      break; }
-        case ESP_GAP_BLE_SCAN_RSP_DATA_SET_COMPLETE_EVT: { memcpy (event.data(), "ESP_GAP_BLE_SCAN_RSP_DATA_SET_COMPLETE_EVT", strlen ("ESP_GAP_BLE_SCAN_RSP_DATA_SET_COMPLETE_EVT")); break; }
-        case ESP_GAP_BLE_ADV_START_COMPLETE_EVT        : { memcpy (event.data(), "ESP_GAP_BLE_ADV_START_COMPLETE_EVT"        , strlen ("ESP_GAP_BLE_ADV_START_COMPLETE_EVT"));         break; }
-        case ESP_GAP_BLE_ADV_STOP_COMPLETE_EVT         : { memcpy (event.data(), "ESP_GAP_BLE_ADV_STOP_COMPLETE_EVT"         , strlen ("ESP_GAP_BLE_ADV_STOP_COMPLETE_EVT"));          break; }
-        case ESP_GAP_BLE_UPDATE_CONN_PARAMS_EVT        : { memcpy (event.data(), "ESP_GAP_BLE_UPDATE_CONN_PARAMS_EVT"        , strlen ("ESP_GAP_BLE_UPDATE_CONN_PARAMS_EVT"));         break; }
-        default                                        : { memcpy (event.data(), "Event not serviced"                        , strlen ("Event not serviced"));                         break; }
+        case ESP_GAP_BLE_ADV_DATA_SET_COMPLETE_EVT     : { return "ESP_GAP_BLE_ADV_DATA_SET_COMPLETE_EVT";      }
+        case ESP_GAP_BLE_SCAN_RSP_DATA_SET_COMPLETE_EVT: { return "ESP_GAP_BLE_SCAN_RSP_DATA_SET_COMPLETE_EVT"; }
+        case ESP_GAP_BLE_ADV_START_COMPLETE_EVT        : { return "ESP_GAP_BLE_ADV_START_COMPLETE_EVT";         }
+        case ESP_GAP_BLE_ADV_STOP_COMPLETE_EVT         : { return "ESP_GAP_BLE_ADV_STOP_COMPLETE_EVT";          }
+        case ESP_GAP_BLE_UPDATE_CONN_PARAMS_EVT        : { return "ESP_GAP_BLE_UPDATE_CONN_PARAMS_EVT";         }
+        default                                        : { return "Event not serviced";                         }
     };
-
-    return event;
 }
 
-static std::array <char, THIRTY> ConvertGattcEventToString (const esp_gatts_cb_event_t v_event)
+static std::string_view ConvertGattcEventToString (const esp_gatts_cb_event_t v_event)
 {
-    std::array <char, THIRTY> event = {};
     switch (v_event)
     {
-        case ESP_GATTS_REG_EVT           : { memcpy (event.data(), "ESP_GATTS_REG_EVT"           , strlen ("ESP_GATTS_REG_EVT"));            break; }
-        case ESP_GATTS_READ_EVT          : { memcpy (event.data(), "ESP_GATTS_READ_EVT"          , strlen ("ESP_GATTS_READ_EVT"));           break; }
-        case ESP_GATTS_WRITE_EVT         : { memcpy (event.data(), "ESP_GATTS_WRITE_EVT"         , strlen ("ESP_GATTS_WRITE_EVT"));          break; }
-        case ESP_GATTS_EXEC_WRITE_EVT    : { memcpy (event.data(), "ESP_GATTS_EXEC_WRITE_EVT"    , strlen ("ESP_GATTS_EXEC_WRITE_EVT"));     break; }
-        case ESP_GATTS_MTU_EVT           : { memcpy (event.data(), "ESP_GATTS_MTU_EVT"           , strlen ("ESP_GATTS_MTU_EVT"));            break; }
-        case ESP_GATTS_UNREG_EVT         : { memcpy (event.data(), "ESP_GATTS_UNREG_EVT"         , strlen ("ESP_GATTS_UNREG_EVT"));          break; }
-        case ESP_GATTS_CREATE_EVT        : { memcpy (event.data(), "ESP_GATTS_CREATE_EVT"        , strlen ("ESP_GATTS_CREATE_EVT"));         break; }
-        case ESP_GATTS_ADD_CHAR_EVT      : { memcpy (event.data(), "ESP_GATTS_ADD_CHAR_EVT"      , strlen ("ESP_GATTS_ADD_CHAR_EVT"));       break; }
-        case ESP_GATTS_ADD_CHAR_DESCR_EVT: { memcpy (event.data(), "ESP_GATTS_ADD_CHAR_DESCR_EVT", strlen ("ESP_GATTS_ADD_CHAR_DESCR_EVT")); break; }
-        case ESP_GATTS_START_EVT         : { memcpy (event.data(), "ESP_GATTS_START_EVT"         , strlen ("ESP_GATTS_START_EVT"));          break; }
-        case ESP_GATTS_CONNECT_EVT       : { memcpy (event.data(), "ESP_GATTS_CONNECT_EVT"       , strlen ("ESP_GATTS_CONNECT_EVT"));        break; }
-        case ESP_GATTS_DISCONNECT_EVT    : { memcpy (event.data(), "ESP_GATTS_DISCONNECT_EVT"    , strlen ("ESP_GATTS_DISCONNECT_EVT"));     break; }
-        case ESP_GATTS_CONF_EVT          : { memcpy (event.data(), "ESP_GATTS_CONF_EVT"          , strlen ("ESP_GATTS_CONF_EVT"));           break; }
-        default                          : { memcpy (event.data(), "Event not serviced"          , strlen ("Event not serviced"));           break; }
+        case ESP_GATTS_REG_EVT           : { return "ESP_GATTS_REG_EVT";            }
+        case ESP_GATTS_READ_EVT          : { return "ESP_GATTS_READ_EVT";           }
+        case ESP_GATTS_WRITE_EVT         : { return "ESP_GATTS_WRITE_EVT";          }
+        case ESP_GATTS_EXEC_WRITE_EVT    : { return "ESP_GATTS_EXEC_WRITE_EVT";     }
+        case ESP_GATTS_MTU_EVT           : { return "ESP_GATTS_MTU_EVT";            }
+        case ESP_GATTS_UNREG_EVT         : { return "ESP_GATTS_UNREG_EVT";          }
+        case ESP_GATTS_CREATE_EVT        : { return "ESP_GATTS_CREATE_EVT";         }
+        case ESP_GATTS_ADD_CHAR_EVT      : { return "ESP_GATTS_ADD_CHAR_EVT";       }
+        case ESP_GATTS_ADD_CHAR_DESCR_EVT: { return "ESP_GATTS_ADD_CHAR_DESCR_EVT"; }
+        case ESP_GATTS_START_EVT         : { return "ESP_GATTS_START_EVT";          }
+        case ESP_GATTS_CONNECT_EVT       : { return "ESP_GATTS_CONNECT_EVT";        }
+        case ESP_GATTS_DISCONNECT_EVT    : { return "ESP_GATTS_DISCONNECT_EVT";     }
+        case ESP_GATTS_CONF_EVT          : { return "ESP_GATTS_CONF_EVT";           }
+        default                          : { return "Event not serviced";           }
     };
-
-    return event;
 }
 
 static void GapEvent (esp_gap_ble_cb_event_t v_event, esp_ble_gap_cb_param_t * v_param)
@@ -209,14 +203,12 @@ void GattsProfileAEvent (esp_gatts_cb_event_t v_event, esp_gatt_if_t v_interface
                         {
                             LOGI (GATTS_MODULE, "Notify enable");
 
-                            Settings::GetInstance ().BleMsgType.Id             = TEN;
-                            Settings::GetInstance ().BleMsgType.Name           = "Server";
-                            Settings::GetInstance ().BleMsgType.Data           = "This is my not very long payload from server";
-                            Settings::GetInstance ().BleMsgType.eOperatingMode = Settings::eStable;
+                            Settings::GetInstance ().Wehicle.eDrive = Settings::EDrive::eBackward;
+                            Settings::GetInstance ().Wehicle.Speed  = TWO_HUNDRED;
 
                             cJSON * root = cJSON_CreateObject ();
-                            BleParserAndSerializer bleParserAndSerialzier;
-                            bleParserAndSerialzier.Serialize (root);
+                            BleSerializer bleSerialzier;
+                            bleSerialzier.Drive (root);
 
                             char * jsonMessage = cJSON_Print (root);
                             LOGI (GATTS_MODULE, "Send: %s", jsonMessage);

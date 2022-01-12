@@ -9,13 +9,13 @@
 //////////////////////////////// FUNCTIONS ////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-bool Json::add (std::string_view v_key, const double v_value, cJSON * v_node)
+bool Json::add (cJSON * v_node, std::string_view v_key, const double v_value)
 {
 	if (cJSON_AddNumberToObject (v_node, v_key.data (), (double &)(v_value)) == NULL) { return false; };
 	return true;
 }
 
-bool Json::add (std::string_view v_key, std::string_view v_value, cJSON * v_node)
+bool Json::add (cJSON * v_node, std::string_view v_key, std::string_view v_value)
 {
 	if (cJSON_AddStringToObject (v_node, v_key.data (), v_value.data ()) == NULL) { return false; };
 	return true;
@@ -33,7 +33,7 @@ void Json::logWarning (std::string_view v_msg, std::string_view v_functionName, 
 	//LOGW (MODULE, msg.c_str ());
 }
 
-void Json::isNodeJsonEmpty (std::string_view v_functionName, std::string_view v_nodeName, const cJSON * const v_node)
+void Json::isNodeJsonEmpty (const cJSON * const v_node, std::string_view v_functionName, std::string_view v_nodeName)
 {
 	if (v_node == NULL) { logWarning ("Empty json node. ", v_functionName, v_nodeName); }
 }

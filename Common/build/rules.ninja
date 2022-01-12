@@ -52,7 +52,7 @@ rule CXX_EXECUTABLE_LINKER__Project
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /usr/bin/cmake -S/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common -B/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common/build
+  command = /usr/bin/cmake -S/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/Common -B/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/Common/build
   description = Re-running CMake...
   generator = 1
 

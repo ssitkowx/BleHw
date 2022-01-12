@@ -37,8 +37,14 @@ SET (ProjectFilesAndFolders main.cpp
                             Json/Json.cpp
                             Settings/Settings.h
                             Settings/Settings.cpp
-                            ParserAndSerializer/BleParserAndSerializer.h
-                            ParserAndSerializer/BleParserAndSerializer.cpp
+                            ParserAndSerializer/BleParser.h
+                            ParserAndSerializer/BleParser.cpp
+                            ParserAndSerializer/BleSerializer.h
+                            ParserAndSerializer/BleSerializer.cpp
+                            ParserAndSerializer/ParserAndSerializerFixture/BleParserFixture.h
+                            ParserAndSerializer/ParserAndSerializerFixture/BleParserFixture.cpp
+                            ParserAndSerializer/ParserAndSerializerFixture/BleSerializerFixture.h
+                            ParserAndSerializer/ParserAndSerializerFixture/BleSerializerFixture.cpp
                             ${GOOGLEMOCK_INCLUDE_PATH}/src/gmock-all.cc
                             ${GOOGLETEST_INCLUDE_PATH}/src/gtest-all.cc
                             ${GOOGLEMOCK_INCLUDE_PATH}/src/gmock_main.cc
@@ -55,9 +61,9 @@ SET (ProjectFilesAndFolders main.cpp
 #SOURCE_GROUP               (TREE                              ${downloadsPath}/Logger PREFIX "" FILES ${downloadsPath}/Logger/Project/Logger.h)                          
 #SOURCE_GROUP               (TREE                              ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
 #LINK_DIRECTORIES           (${ProjectName}                    ${PackageLibsPaths})
-LINK_DIRECTORIES           (${ProjectName}                    ${PackageLibsPaths})
-ADD_EXECUTABLE             (${ProjectName}                    ${ProjectFilesAndFolders})
-TARGET_INCLUDE_DIRECTORIES (${ProjectName} PUBLIC             ${ProjectPathsLists} ${PackageIncludesPaths})
+LINK_DIRECTORIES            (${ProjectName}                    ${PackageLibsPaths})
+ADD_EXECUTABLE              (${ProjectName}                    ${ProjectFilesAndFolders})
+TARGET_INCLUDE_DIRECTORIES  (${ProjectName} PUBLIC             ${ProjectPathsLists} ${PackageIncludesPaths})
 #TARGET_LINK_LIBRARIES      (${ProjectName}                    ${CONAN_LIBS_GTEST} ${PackageLibsNames})
-TARGET_LINK_LIBRARIES      (${ProjectName}                    ${PROTOBUF_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
-TARGET_COMPILE_FEATURES    (${ProjectName} PUBLIC cxx_std_17)
+TARGET_LINK_LIBRARIES       (${ProjectName}                    ${PROTOBUF_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+TARGET_COMPILE_FEATURES     (${ProjectName} PUBLIC cxx_std_17)

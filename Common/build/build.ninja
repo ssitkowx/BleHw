@@ -34,7 +34,7 @@ include rules.ninja
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common/build && /usr/bin/cmake -S/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common -B/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common/build
+  COMMAND = cd /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/Common/build && /usr/bin/cmake -S/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/Common -B/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/Common/build
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -46,7 +46,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common/build && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/Common/build && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -68,12 +68,12 @@ build CMakeFiles/Project.dir/main.cpp.o: CXX_COMPILER__Project ../main.cpp || cm
   OBJECT_DIR = CMakeFiles/Project.dir
   OBJECT_FILE_DIR = CMakeFiles/Project.dir
 
-build CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/Json/cJSON.c.o: C_COMPILER__Project /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/Json/cJSON.c || cmake_object_order_depends_target_Project
-  DEP_FILE = CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/Json/cJSON.c.o.d
+build CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/Json/cJSON.c.o: C_COMPILER__Project /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/Json/cJSON.c || cmake_object_order_depends_target_Project
+  DEP_FILE = CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/Json/cJSON.c.o.d
   FLAGS = -g
   INCLUDES = -I../../External/Libs/Json -I../Json -I../MsgType -I../Settings -I../ParserAndSerializer -I. -I../../External/Libs/protobuf/third_party/googletest/googlemock -I../../External/Libs/protobuf/third_party/googletest/googletest -I../../External/Libs/protobuf/third_party/googletest/googlemock/include -I../../External/Libs/protobuf/third_party/googletest/googletest/include -I/home/sylwester/.conan/download/Utils/Project -I/home/sylwester/.conan/download/Logger/Project -I/home/sylwester/.conan/download/LoggerHw/Project -I/home/sylwester/.conan/download/SystemTime/Project
   OBJECT_DIR = CMakeFiles/Project.dir
-  OBJECT_FILE_DIR = CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/Json
+  OBJECT_FILE_DIR = CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/Json
 
 build CMakeFiles/Project.dir/BleMsgType.pb.cc.o: CXX_COMPILER__Project BleMsgType.pb.cc || cmake_object_order_depends_target_Project
   DEP_FILE = CMakeFiles/Project.dir/BleMsgType.pb.cc.o.d
@@ -96,33 +96,54 @@ build CMakeFiles/Project.dir/Settings/Settings.cpp.o: CXX_COMPILER__Project ../S
   OBJECT_DIR = CMakeFiles/Project.dir
   OBJECT_FILE_DIR = CMakeFiles/Project.dir/Settings
 
-build CMakeFiles/Project.dir/ParserAndSerializer/BleParserAndSerializer.cpp.o: CXX_COMPILER__Project ../ParserAndSerializer/BleParserAndSerializer.cpp || cmake_object_order_depends_target_Project
-  DEP_FILE = CMakeFiles/Project.dir/ParserAndSerializer/BleParserAndSerializer.cpp.o.d
+build CMakeFiles/Project.dir/ParserAndSerializer/BleParser.cpp.o: CXX_COMPILER__Project ../ParserAndSerializer/BleParser.cpp || cmake_object_order_depends_target_Project
+  DEP_FILE = CMakeFiles/Project.dir/ParserAndSerializer/BleParser.cpp.o.d
   FLAGS = -g   -std=gnu++17
   INCLUDES = -I../../External/Libs/Json -I../Json -I../MsgType -I../Settings -I../ParserAndSerializer -I. -I../../External/Libs/protobuf/third_party/googletest/googlemock -I../../External/Libs/protobuf/third_party/googletest/googletest -I../../External/Libs/protobuf/third_party/googletest/googlemock/include -I../../External/Libs/protobuf/third_party/googletest/googletest/include -I/home/sylwester/.conan/download/Utils/Project -I/home/sylwester/.conan/download/Logger/Project -I/home/sylwester/.conan/download/LoggerHw/Project -I/home/sylwester/.conan/download/SystemTime/Project
   OBJECT_DIR = CMakeFiles/Project.dir
   OBJECT_FILE_DIR = CMakeFiles/Project.dir/ParserAndSerializer
 
-build CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/protobuf/third_party/googletest/googlemock/src/gmock-all.cc.o: CXX_COMPILER__Project /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/protobuf/third_party/googletest/googlemock/src/gmock-all.cc || cmake_object_order_depends_target_Project
-  DEP_FILE = CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/protobuf/third_party/googletest/googlemock/src/gmock-all.cc.o.d
+build CMakeFiles/Project.dir/ParserAndSerializer/BleSerializer.cpp.o: CXX_COMPILER__Project ../ParserAndSerializer/BleSerializer.cpp || cmake_object_order_depends_target_Project
+  DEP_FILE = CMakeFiles/Project.dir/ParserAndSerializer/BleSerializer.cpp.o.d
   FLAGS = -g   -std=gnu++17
   INCLUDES = -I../../External/Libs/Json -I../Json -I../MsgType -I../Settings -I../ParserAndSerializer -I. -I../../External/Libs/protobuf/third_party/googletest/googlemock -I../../External/Libs/protobuf/third_party/googletest/googletest -I../../External/Libs/protobuf/third_party/googletest/googlemock/include -I../../External/Libs/protobuf/third_party/googletest/googletest/include -I/home/sylwester/.conan/download/Utils/Project -I/home/sylwester/.conan/download/Logger/Project -I/home/sylwester/.conan/download/LoggerHw/Project -I/home/sylwester/.conan/download/SystemTime/Project
   OBJECT_DIR = CMakeFiles/Project.dir
-  OBJECT_FILE_DIR = CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/protobuf/third_party/googletest/googlemock/src
+  OBJECT_FILE_DIR = CMakeFiles/Project.dir/ParserAndSerializer
 
-build CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/protobuf/third_party/googletest/googletest/src/gtest-all.cc.o: CXX_COMPILER__Project /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/protobuf/third_party/googletest/googletest/src/gtest-all.cc || cmake_object_order_depends_target_Project
-  DEP_FILE = CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/protobuf/third_party/googletest/googletest/src/gtest-all.cc.o.d
+build CMakeFiles/Project.dir/ParserAndSerializer/ParserAndSerializerFixture/BleParserFixture.cpp.o: CXX_COMPILER__Project ../ParserAndSerializer/ParserAndSerializerFixture/BleParserFixture.cpp || cmake_object_order_depends_target_Project
+  DEP_FILE = CMakeFiles/Project.dir/ParserAndSerializer/ParserAndSerializerFixture/BleParserFixture.cpp.o.d
   FLAGS = -g   -std=gnu++17
   INCLUDES = -I../../External/Libs/Json -I../Json -I../MsgType -I../Settings -I../ParserAndSerializer -I. -I../../External/Libs/protobuf/third_party/googletest/googlemock -I../../External/Libs/protobuf/third_party/googletest/googletest -I../../External/Libs/protobuf/third_party/googletest/googlemock/include -I../../External/Libs/protobuf/third_party/googletest/googletest/include -I/home/sylwester/.conan/download/Utils/Project -I/home/sylwester/.conan/download/Logger/Project -I/home/sylwester/.conan/download/LoggerHw/Project -I/home/sylwester/.conan/download/SystemTime/Project
   OBJECT_DIR = CMakeFiles/Project.dir
-  OBJECT_FILE_DIR = CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/protobuf/third_party/googletest/googletest/src
+  OBJECT_FILE_DIR = CMakeFiles/Project.dir/ParserAndSerializer/ParserAndSerializerFixture
 
-build CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/protobuf/third_party/googletest/googlemock/src/gmock_main.cc.o: CXX_COMPILER__Project /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/protobuf/third_party/googletest/googlemock/src/gmock_main.cc || cmake_object_order_depends_target_Project
-  DEP_FILE = CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/protobuf/third_party/googletest/googlemock/src/gmock_main.cc.o.d
+build CMakeFiles/Project.dir/ParserAndSerializer/ParserAndSerializerFixture/BleSerializerFixture.cpp.o: CXX_COMPILER__Project ../ParserAndSerializer/ParserAndSerializerFixture/BleSerializerFixture.cpp || cmake_object_order_depends_target_Project
+  DEP_FILE = CMakeFiles/Project.dir/ParserAndSerializer/ParserAndSerializerFixture/BleSerializerFixture.cpp.o.d
   FLAGS = -g   -std=gnu++17
   INCLUDES = -I../../External/Libs/Json -I../Json -I../MsgType -I../Settings -I../ParserAndSerializer -I. -I../../External/Libs/protobuf/third_party/googletest/googlemock -I../../External/Libs/protobuf/third_party/googletest/googletest -I../../External/Libs/protobuf/third_party/googletest/googlemock/include -I../../External/Libs/protobuf/third_party/googletest/googletest/include -I/home/sylwester/.conan/download/Utils/Project -I/home/sylwester/.conan/download/Logger/Project -I/home/sylwester/.conan/download/LoggerHw/Project -I/home/sylwester/.conan/download/SystemTime/Project
   OBJECT_DIR = CMakeFiles/Project.dir
-  OBJECT_FILE_DIR = CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/protobuf/third_party/googletest/googlemock/src
+  OBJECT_FILE_DIR = CMakeFiles/Project.dir/ParserAndSerializer/ParserAndSerializerFixture
+
+build CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/protobuf/third_party/googletest/googlemock/src/gmock-all.cc.o: CXX_COMPILER__Project /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/protobuf/third_party/googletest/googlemock/src/gmock-all.cc || cmake_object_order_depends_target_Project
+  DEP_FILE = CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/protobuf/third_party/googletest/googlemock/src/gmock-all.cc.o.d
+  FLAGS = -g   -std=gnu++17
+  INCLUDES = -I../../External/Libs/Json -I../Json -I../MsgType -I../Settings -I../ParserAndSerializer -I. -I../../External/Libs/protobuf/third_party/googletest/googlemock -I../../External/Libs/protobuf/third_party/googletest/googletest -I../../External/Libs/protobuf/third_party/googletest/googlemock/include -I../../External/Libs/protobuf/third_party/googletest/googletest/include -I/home/sylwester/.conan/download/Utils/Project -I/home/sylwester/.conan/download/Logger/Project -I/home/sylwester/.conan/download/LoggerHw/Project -I/home/sylwester/.conan/download/SystemTime/Project
+  OBJECT_DIR = CMakeFiles/Project.dir
+  OBJECT_FILE_DIR = CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/protobuf/third_party/googletest/googlemock/src
+
+build CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/protobuf/third_party/googletest/googletest/src/gtest-all.cc.o: CXX_COMPILER__Project /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/protobuf/third_party/googletest/googletest/src/gtest-all.cc || cmake_object_order_depends_target_Project
+  DEP_FILE = CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/protobuf/third_party/googletest/googletest/src/gtest-all.cc.o.d
+  FLAGS = -g   -std=gnu++17
+  INCLUDES = -I../../External/Libs/Json -I../Json -I../MsgType -I../Settings -I../ParserAndSerializer -I. -I../../External/Libs/protobuf/third_party/googletest/googlemock -I../../External/Libs/protobuf/third_party/googletest/googletest -I../../External/Libs/protobuf/third_party/googletest/googlemock/include -I../../External/Libs/protobuf/third_party/googletest/googletest/include -I/home/sylwester/.conan/download/Utils/Project -I/home/sylwester/.conan/download/Logger/Project -I/home/sylwester/.conan/download/LoggerHw/Project -I/home/sylwester/.conan/download/SystemTime/Project
+  OBJECT_DIR = CMakeFiles/Project.dir
+  OBJECT_FILE_DIR = CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/protobuf/third_party/googletest/googletest/src
+
+build CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/protobuf/third_party/googletest/googlemock/src/gmock_main.cc.o: CXX_COMPILER__Project /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/protobuf/third_party/googletest/googlemock/src/gmock_main.cc || cmake_object_order_depends_target_Project
+  DEP_FILE = CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/protobuf/third_party/googletest/googlemock/src/gmock_main.cc.o.d
+  FLAGS = -g   -std=gnu++17
+  INCLUDES = -I../../External/Libs/Json -I../Json -I../MsgType -I../Settings -I../ParserAndSerializer -I. -I../../External/Libs/protobuf/third_party/googletest/googlemock -I../../External/Libs/protobuf/third_party/googletest/googletest -I../../External/Libs/protobuf/third_party/googletest/googlemock/include -I../../External/Libs/protobuf/third_party/googletest/googletest/include -I/home/sylwester/.conan/download/Utils/Project -I/home/sylwester/.conan/download/Logger/Project -I/home/sylwester/.conan/download/LoggerHw/Project -I/home/sylwester/.conan/download/SystemTime/Project
+  OBJECT_DIR = CMakeFiles/Project.dir
+  OBJECT_FILE_DIR = CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/protobuf/third_party/googletest/googlemock/src
 
 build CMakeFiles/Project.dir/home/sylwester/.conan/download/Utils/Project/Utils.cpp.o: CXX_COMPILER__Project /home/sylwester/.conan/download/Utils/Project/Utils.cpp || cmake_object_order_depends_target_Project
   DEP_FILE = CMakeFiles/Project.dir/home/sylwester/.conan/download/Utils/Project/Utils.cpp.o.d
@@ -160,10 +181,10 @@ build CMakeFiles/Project.dir/home/sylwester/.conan/download/SystemTime/Project/S
 #############################################
 # Link the executable Project
 
-build Project: CXX_EXECUTABLE_LINKER__Project CMakeFiles/Project.dir/main.cpp.o CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/Json/cJSON.c.o CMakeFiles/Project.dir/BleMsgType.pb.cc.o CMakeFiles/Project.dir/Json/Json.cpp.o CMakeFiles/Project.dir/Settings/Settings.cpp.o CMakeFiles/Project.dir/ParserAndSerializer/BleParserAndSerializer.cpp.o CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/protobuf/third_party/googletest/googlemock/src/gmock-all.cc.o CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/protobuf/third_party/googletest/googletest/src/gtest-all.cc.o CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/External/Libs/protobuf/third_party/googletest/googlemock/src/gmock_main.cc.o CMakeFiles/Project.dir/home/sylwester/.conan/download/Utils/Project/Utils.cpp.o CMakeFiles/Project.dir/home/sylwester/.conan/download/Logger/Project/Logger.cpp.o CMakeFiles/Project.dir/home/sylwester/.conan/download/LoggerHw/Project/LoggerHw.cpp.o CMakeFiles/Project.dir/home/sylwester/.conan/download/SystemTime/Project/SystemTime.cpp.o | /usr/local/lib/libprotobuf.so
+build Project: CXX_EXECUTABLE_LINKER__Project CMakeFiles/Project.dir/main.cpp.o CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/Json/cJSON.c.o CMakeFiles/Project.dir/BleMsgType.pb.cc.o CMakeFiles/Project.dir/Json/Json.cpp.o CMakeFiles/Project.dir/Settings/Settings.cpp.o CMakeFiles/Project.dir/ParserAndSerializer/BleParser.cpp.o CMakeFiles/Project.dir/ParserAndSerializer/BleSerializer.cpp.o CMakeFiles/Project.dir/ParserAndSerializer/ParserAndSerializerFixture/BleParserFixture.cpp.o CMakeFiles/Project.dir/ParserAndSerializer/ParserAndSerializerFixture/BleSerializerFixture.cpp.o CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/protobuf/third_party/googletest/googlemock/src/gmock-all.cc.o CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/protobuf/third_party/googletest/googletest/src/gtest-all.cc.o CMakeFiles/Project.dir/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/External/Libs/protobuf/third_party/googletest/googlemock/src/gmock_main.cc.o CMakeFiles/Project.dir/home/sylwester/.conan/download/Utils/Project/Utils.cpp.o CMakeFiles/Project.dir/home/sylwester/.conan/download/Logger/Project/Logger.cpp.o CMakeFiles/Project.dir/home/sylwester/.conan/download/LoggerHw/Project/LoggerHw.cpp.o CMakeFiles/Project.dir/home/sylwester/.conan/download/SystemTime/Project/SystemTime.cpp.o | /usr/local/lib/libprotobuf.so
   FLAGS = -g
-  LINK_LIBRARIES = -Wl,-rpath,/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common/Project:/usr/local/lib  /usr/local/lib/libprotobuf.so  -lpthread  -lpthread
-  LINK_PATH = -L/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common/Project
+  LINK_LIBRARIES = -Wl,-rpath,/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/Common/Project:/usr/local/lib  /usr/local/lib/libprotobuf.so  -lpthread  -lpthread
+  LINK_PATH = -L/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/Common/Project
   OBJECT_DIR = CMakeFiles/Project.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -175,7 +196,7 @@ build Project: CXX_EXECUTABLE_LINKER__Project CMakeFiles/Project.dir/main.cpp.o 
 # Custom command for BleMsgType.pb.h
 
 build BleMsgType.pb.h BleMsgType.pb.cc: CUSTOM_COMMAND ../MsgType/BleMsgType.proto /usr/local/bin/protoc
-  COMMAND = cd /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common/build && /usr/local/bin/protoc --cpp_out /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common/build -I /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common/MsgType /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common/MsgType/BleMsgType.proto
+  COMMAND = cd /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/Common/build && /usr/local/bin/protoc --cpp_out /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/Common/build -I /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/Common/MsgType /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/Common/MsgType/BleMsgType.proto
   DESC = Running cpp protocol buffer compiler on MsgType/BleMsgType.proto
   restat = 1
 
@@ -188,7 +209,7 @@ build BleMsgType.pb.h BleMsgType.pb.cc: CUSTOM_COMMAND ../MsgType/BleMsgType.pro
 # =============================================================================
 
 #############################################
-# Folder: /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common/build
+# Folder: /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/Common/build
 
 build all: phony Project
 

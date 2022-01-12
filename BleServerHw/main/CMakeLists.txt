@@ -4,7 +4,8 @@ SET (PackageSourcePaths ../../External/Libs/Json/cJSON.c
                         ../../Common/Json/Json.cpp
                         ../../Common/Settings/Settings.cpp
                         #../../Common/SystemTimeHw.cpp
-                        ../../Common/ParserAndSerializer/BleParserAndSerializer.cpp
+                        ../../Common/ParserAndSerializer/BleParser.cpp
+                        ../../Common/ParserAndSerializer/BleSerializer.cpp
                         "BleServerHw.cpp"
                         ${PackageIncludePaths}/Rtos/Project/Rtos.cpp
                         ${PackageIncludePaths}/Utils/Project/Utils.cpp

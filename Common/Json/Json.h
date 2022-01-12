@@ -17,10 +17,10 @@ class Json
     static constexpr char * const MODULE = (char *)"Json";
 
     protected:
-        bool add             (std::string_view v_key         , const double     v_value       , cJSON * v_node);
-        bool add             (std::string_view v_key         , std::string_view v_value       , cJSON * v_node);
-        void logWarning      (std::string_view v_msg         , std::string_view v_functionName, std::string_view v_nodeName);
-        void isNodeJsonEmpty (std::string_view v_functionName, std::string_view v_nodeName    , const cJSON * const v_node);
+        bool add             (cJSON * v_node            , std::string_view v_key         , const double     v_value);
+        bool add             (cJSON * v_node            , std::string_view v_key         , std::string_view v_value);
+        void logWarning      (std::string_view v_msg    , std::string_view v_functionName, std::string_view v_nodeName);
+        void isNodeJsonEmpty (const cJSON * const v_node, std::string_view v_functionName, std::string_view v_nodeName);
 };
 
 ///////////////////////////////////////////////////////////////////////////////

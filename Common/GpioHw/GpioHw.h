@@ -5,16 +5,28 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "Gpio.h"
+#include "Utils.h"
 #include "driver/gpio.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "freertos/queue.h"
+#include "freertos/semphr.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 //////////////////////////////// VARIABLES ////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-using  GpioIsr = void (*) (void * v_arg);
+using                    GpioIsr = void (*) (void * v_arg);
+extern SemaphoreHandle_t gpioSemaphore;
+
+///////////////////////////////////////////////////////////////////////////////
+//////////////////////////////// FUNCTIONS ////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+static void IRAM_ATTR gpioIsr (void * v_arg)
+{
+    static BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+    xSemaphoreGiveFromISR (gpioSemaphore, &xHigherPriorityTaskWoken);
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 /////////////////////////// CLASSES/STRUCTURES ////////////////////////////////
@@ -25,12 +37,13 @@ class GpioHw : public Gpio <GpioHw>
     static constexpr char * const MODULE = (char *)"Gpio";
 
     public:
-        GpioHw (GpioIsr v_isrType)
+        GpioHw ()
         {
-            gpio_install_isr_service (ESP_INTR_FLAG_LEVEL1);
-            setPinConfig             (GPIO_NUM_26, v_isrType, GPIO_INTR_POSEDGE, GPIO_MODE_INPUT , GPIO_PULLDOWN_DISABLE, GPIO_PULLUP_ENABLE);
-            setPinConfig             (GPIO_NUM_27, v_isrType, GPIO_INTR_DISABLE, GPIO_MODE_OUTPUT, GPIO_PULLDOWN_DISABLE, GPIO_PULLUP_DISABLE);
+            gpioSemaphore = xSemaphoreCreateBinary ();
 
+            gpio_install_isr_service (ESP_INTR_FLAG_LEVEL1);
+            setPinConfig             (GPIO_NUM_26, gpioIsr, GPIO_INTR_POSEDGE, GPIO_MODE_INPUT , GPIO_PULLDOWN_DISABLE, GPIO_PULLUP_ENABLE);
+            setPinConfig             (GPIO_NUM_27, gpioIsr, GPIO_INTR_DISABLE, GPIO_MODE_OUTPUT, GPIO_PULLDOWN_DISABLE, GPIO_PULLUP_DISABLE);
         }
         ~GpioHw () = default;
 

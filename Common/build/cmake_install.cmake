@@ -1,4 +1,4 @@
-# Install script for directory: /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common
+# Install script for directory: /media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/Common
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/Linux/Common/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/media/sylwester/f801ff64-317b-4688-8355-7e7661b1fb18/Projekty/GIT/ESP32/BleHw/Common/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

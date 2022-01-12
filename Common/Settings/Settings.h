@@ -15,6 +15,20 @@
 class Settings final
 {
     public:
+        enum ETurn
+        {
+            eOn,
+            eOff,
+            eLeft,
+            eRight
+        };
+
+        enum EDrive
+        {
+            eForward,
+            eBackward
+        };
+
         enum EOperatingMode
         {
             eNormal = ZERO,
@@ -30,6 +44,15 @@ class Settings final
 
             EOperatingMode eOperatingMode = eNormal;
         } BleMsgType;
+
+        struct
+        {
+            ETurn    eTurn;
+            EDrive   eDrive;
+            uint16_t Speed;
+        } Wehicle;
+        
+        std::string Command;
 
         Settings () = default;
 
