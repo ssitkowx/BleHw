@@ -68,6 +68,7 @@ static std::string_view ConvertGattcEventToString (const esp_gatts_cb_event_t v_
         case ESP_GATTS_CONNECT_EVT       : { return "ESP_GATTS_CONNECT_EVT";        }
         case ESP_GATTS_DISCONNECT_EVT    : { return "ESP_GATTS_DISCONNECT_EVT";     }
         case ESP_GATTS_CONF_EVT          : { return "ESP_GATTS_CONF_EVT";           }
+        case ESP_GATTS_RESPONSE_EVT      : { return "ESP_GATTS_RESPONSE_EVT";       }
         default                          : { return "Event not serviced";           }
     };
 }
@@ -185,7 +186,7 @@ void GattsProfileAEvent (esp_gatts_cb_event_t v_event, esp_gatt_if_t v_interface
             //response.attr_value.value [ONE]   = 0xed;
             //response.attr_value.value [TWO]   = 0xbe;
             //response.attr_value.value [THREE] = 0xef;
-
+            LOGI (GATTS_MODULE, "Receive len: %d, data: %s", v_param->conf.len, (char *)v_param->conf.value);
             esp_ble_gatts_send_response (v_interface, v_param->read.conn_id, v_param->read.trans_id, ESP_GATT_OK, &response);
             break;
         }
