@@ -18,7 +18,7 @@ class Conan(ConanFile):
     author          = "sylsit"
     exports         = "*"
     exports_sources = '../*'
-    requires        = ["gtest/1.8.1@bincrafters/stable"]
+    requires        = ["gtest/cci.20210126"]
     packagesPath    = "/home/sylwester/.conan/data"
     downloadsPath   = "/home/sylwester/.conan/download"
     packages        = ["Gpio/1.0@ssitkowx/stable",
